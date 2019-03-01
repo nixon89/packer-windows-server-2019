@@ -46,3 +46,14 @@ Vagrant.configure("2") do |config|
   config.vm.box = "win2019-std"
 end
 ```
+For example:
+```
+cd ~
+mkdir newdir
+cd newdir
+nano Vagrantfile
+```
+Then insert code above in Vagrantfile.
+Ctrl+X, Y, Enter
+Then:
+`vagrant up`
