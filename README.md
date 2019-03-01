@@ -38,3 +38,11 @@ $ vagrant box list
 
 win2019-std        (virtualbox, 0)
 ```
+## Runnin new box in Vagrant
+
+Using new `win2019-std` box in Vagrantfile:
+```
+Vagrant.configure("2") do |config|
+  config.vm.box = "win2019-std"
+end
+```
