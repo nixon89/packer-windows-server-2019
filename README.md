@@ -98,3 +98,32 @@ or on a per folder basis within the Vagrantfile:
 ==> default: Mounting shared folders...
     default: /vagrant => /home/nixon89/newdir
 ```
+Common vagrant commands:
+`vagrant box`             manages boxes: installation, removal, etc.
+`vagrant cloud`           manages everything related to Vagrant Cloud
+`vagrant destroy`         stops and deletes all traces of the vagrant machine
+`vagrant global-status`   outputs status Vagrant environments for this user
+`vagrant halt`            stops the vagrant machine
+`vagrant help`            shows the help for a subcommand
+`vagrant init`            initializes a new Vagrant environment by creating a Vagrantfile
+`vagrant login`           
+`vagrant package`         packages a running vagrant environment into a box
+`vagrant plugin`          manages plugins: install, uninstall, update, etc.
+`vagrant port`            displays information about guest port mappings
+`vagrant powershell`      connects to machine via powershell remoting
+`vagrant provision`       provisions the vagrant machine
+`vagrant push`            deploys code in this environment to a configured destination
+`vagrant rdp`             connects to machine via RDP
+`vagrant reload`          restarts vagrant machine, loads new Vagrantfile configuration
+`vagrant resume`          resume a suspended vagrant machine
+`vagrant snapshot`        manages snapshots: saving, restoring, etc.
+`vagrant ssh`             connects to machine via SSH
+`vagrant ssh-config`      outputs OpenSSH valid configuration to connect to the machine
+`vagrant status`          outputs status of the vagrant machine
+`vagrant suspend`         suspends the machine
+`vagrant up`              starts and provisions the vagrant environment
+`vagrant upload`          upload to machine via communicator
+`vagrant validate`        validates the Vagrantfile
+`vagrant version`         prints current and latest Vagrant version
+`vagrant winrm`           executes commands on a machine via WinRM
+`vagrant winrm-config`    outputs WinRM configuration to connect to the machine
