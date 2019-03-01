@@ -1,0 +1,27 @@
+# script will saved to C:\tmp\vagrant-shell.ps1
+# only powershell syntax supported
+$script = <<-SCRIPT
+Set-Location C:
+$url = "https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"
+$file = "ConfigureRemotingForAnsible.ps1"
+(New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
+powershell.exe -ExecutionPolicy ByPass -File $file -DisableBasicAuth -CertValidityDays 3650 -ForceNewSSLCert
+SCRIPT
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "win2019-std"
+  config.vm.guest = :windows
+  config.vm.communicator = "winrm"
+  config.vm.network :forwarded_port, guest: 3389, host: 3389, id: 'rdp', auto_correct: true
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = true
+    vb.memory = 2048
+    vb.cpus = 2
+    vb.name = "win2019-std"
+  end
+
+  config.vm.provision "shell", inline: $script
+
+end
