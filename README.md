@@ -55,5 +55,46 @@ nano Vagrantfile
 ```
 Then insert code above in Vagrantfile.
 Ctrl+X, Y, Enter
-Then:
+Then execute:
 `vagrant up`
+
+Console output:
+```
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Importing base box 'win2019-std'...
+==> default: Matching MAC address for NAT networking...
+==> default: Setting the name of the VM: newdir_default_1551460942992_88012
+Vagrant is currently configured to create VirtualBox synced folders with
+the `SharedFoldersEnableSymlinksCreate` option enabled. If the Vagrant
+guest is not trusted, you may want to disable this option. For more
+information on this option, please refer to the VirtualBox manual:
+
+  https://www.virtualbox.org/manual/ch04.html#sharedfolders
+
+This option can be disabled globally with an environment variable:
+
+  VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
+
+or on a per folder basis within the Vagrantfile:
+
+  config.vm.synced_folder '/host/path', '/guest/path', SharedFoldersEnableSymlinksCreate: false
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+==> default: Forwarding ports...
+    default: 3389 (guest) => 3389 (host) (adapter 1)
+    default: 5985 (guest) => 55985 (host) (adapter 1)
+    default: 5986 (guest) => 55986 (host) (adapter 1)
+    default: 22 (guest) => 2222 (host) (adapter 1)
+==> default: Running 'pre-boot' VM customizations...
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: WinRM address: 127.0.0.1:55985
+    default: WinRM username: vagrant
+    default: WinRM execution_time_limit: PT2H
+    default: WinRM transport: negotiate
+==> default: Machine booted and ready!
+==> default: Checking for guest additions in VM...
+==> default: Mounting shared folders...
+    default: /vagrant => /home/nixon89/newdir
+```
