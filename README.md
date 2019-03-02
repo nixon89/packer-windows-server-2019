@@ -4,6 +4,7 @@
 Packer
 Vagrant
 Virtualbox
+pip: pywinrm
 
 ## Building box by Packer
 To build a Windows Server 2019 box for only the VirtualBox provider
