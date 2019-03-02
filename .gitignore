@@ -13,3 +13,7 @@ packer.log
 Gemfile.lock
 bootstrap.sh
 Berksfile.lock
+
+#vagrant
+*.retry
+examples/.vagrant/*
