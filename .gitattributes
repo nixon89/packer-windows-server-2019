@@ -13,3 +13,7 @@ Autounattend.xml eol=crlf
 
 # Force binary on these files
 *.cer binary
+
+#vagrant
+*.retry
+examples/.vagrant/*
