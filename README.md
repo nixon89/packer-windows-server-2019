@@ -1,5 +1,10 @@
 # packer-windows-server-2019
 
+## requirements 
+Packer
+Vagrant
+Virtualbox
+
 ## Building box by Packer
 To build a Windows Server 2019 box for only the VirtualBox provider
 ```
