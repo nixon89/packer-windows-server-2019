@@ -12,8 +12,12 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = "win2019-std"
   config.vm.guest = :windows
+  config.vm.hostname = "win2019-std-test-vm"
   config.vm.communicator = "winrm"
   config.vm.network :forwarded_port, guest: 3389, host: 3389, id: 'rdp', auto_correct: true
+
+  config.winrm.username = "vagrant"
+  config.winrm.password = "vagrant"
 
   config.vm.provider "virtualbox" do |vb|
     #run virtualbox gui
@@ -31,6 +35,7 @@ Vagrant.configure("2") do |config|
 
   #try ansible
   config.vm.provision "ansible" do |ansible|
+    # ansible.inventory_path = "ansible/inventory"
     ansible.playbook = "main.yml"
     ansible.verbose = "-vv"
     # ansible.extra_vars = {
