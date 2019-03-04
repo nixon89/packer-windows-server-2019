@@ -23,7 +23,7 @@
 			"floppy_files": [
 				"answer_files/2019/Autounattend.xml"
 			]
-		},
+		}
 	],
 	"provisioners": [{
 			"type": "chef-solo",
