@@ -1,14 +1,15 @@
-# script will saved to C:\tmp\vagrant-shell.ps1
-# only powershell syntax supported
+# Shell provision script will be saved to C:\tmp\vagrant-shell.ps1
+# Each shell provision script override previos shell scrip on vm
+# Only powershell syntax supported in shell provision 
 
-#resize drive C script
+# powershell script to resize disk in vm from 40G to 50GB, used in section: config.vm.provision "shell", inline: $resizedisk
 $resizedisk = <<-SCRIPT
 $MaxSize = (Get-PartitionSupportedSize -DriveLetter C).SizeMax
 Resize-Partition -DriveLetter C -Size $MaxSize
 SCRIPT
 
-#enable ansible support for windows
-$script = <<-SCRIPT
+# powershell script to enable ansible support for windows, used in section: config.vm.provision "shell", inline: $ansibleprepare
+$ansibleprepare = <<-SCRIPT
 Set-Location C:
 $url = "https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"
 $file = "ConfigureRemotingForAnsible.ps1"
@@ -17,43 +18,52 @@ powershell.exe -ExecutionPolicy ByPass -File $file -DisableBasicAuth -CertValidi
 SCRIPT
 
 Vagrant.configure("2") do |config|
-
+  # set name, what box to use in vagrant
   config.vm.box = "win2019-std"
-  #requires https://github.com/sprotheroe/vagrant-disksize
+  # set vm disk size. If default 40GB disk not enough. Only disk size, not filesistem size.
+  # requires vagrant module https://github.com/sprotheroe/vagrant-disksize
   config.disksize.size = '50GB'
+  # set vm guest os type
   config.vm.guest = :windows
+  # set which communicator use for vm
   config.vm.communicator = "winrm"
+  # set user for winrm connection
   config.winrm.username = "vagrant"
+  # set password for winrm connection
   config.winrm.password = "vagrant"
+  # config network
   config.vm.network :forwarded_port, guest: 3389, host: 3389, id: 'rdp', auto_correct: true
 
   config.vm.provider "virtualbox" do |vb|
-    #run virtualbox gui
+    # run virtualbox gui, when run vagrant box
     vb.gui = true
-    #memory settings
+    # set memory size for vm
     vb.memory = 2048
-    #cpu settings
+    # set cpu count for vm
     vb.cpus = 2
-    #virtualbox vm name
+    # set name for vm
     vb.name = "win2019-std"
   end
   
-  #run powershell script for resize C drive
+  # run powershell provision script, after starting vagrant box
   config.vm.provision "shell", inline: $resizedisk
-  #run powershell provision script to configure windows for working with ansible
-  config.vm.provision "shell", inline: $script
+  config.vm.provision "shell", inline: $ansibleprepare
 
-  # # try ansible
-  # config.vm.provision "ansible" do |ansible|
-  #   # ansible.inventory_path = "ansible/inventory"
-  #   ansible.playbook = "main.yml"
-  #   ansible.verbose = "-vv"
-  #   # ansible.extra_vars = {
-  #     # ansible_ssh_user: "vagrant",
-  #     # ansible_ssh_pass: "vagrant",
-  #     # ansible_ssh_port: 55986,
-  #     # ansible_connection: "winrm"
-  #   # }
-  # end
+  # run ansible playbook for provision vm, after starting vagrant box and after powershell script
+  config.vm.provision "ansible" do |ansible|
+    #  # specify inventory path for ansible provisioner
+    # ansible.inventory_path = "ansible/inventory"
+    # specify ansible playbook for provision
+    ansible.playbook = "main.yml"
+    # specify ansible verbose output
+    ansible.verbose = "-vv"
+    # # ansible extravars can be scpecifyed to
+    # ansible.extra_vars = {
+    #   ansible_ssh_user: "vagrant",
+    #   ansible_ssh_pass: "vagrant",
+    #   ansible_ssh_port: 55986,
+    #   ansible_connection: "winrm"
+    # }
+  end
 
 end

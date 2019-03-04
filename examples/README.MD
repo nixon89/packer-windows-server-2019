@@ -15,6 +15,8 @@ Example, how to use box in Vagrant.
 
 You may see simple example `Vagrantfile` in this folder. There are commets for better understanding.
 
-For running example box, after build and import new box to Vagrant, you must exec `vagrant up` in `examples` folder.
+In `main.yml` located sample ansible playbook, for ensure, that vagrant ansible provisioner worked with windows vm.
 
-For destroy box, exec `vagrant destroy` in `examples` folder.
+For running vagrant box, after build and import new box to Vagrant, you must exec `vagrant up` in `examples` folder. New virtual machine will be launched ~4min15sec
+
+For destroy vargant box, exec `vagrant destroy` in `examples` folder.
