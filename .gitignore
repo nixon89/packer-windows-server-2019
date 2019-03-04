@@ -16,4 +16,4 @@ Berksfile.lock
 
 #vagrant
 *.retry
-examples/.vagrant/*
+examples/.vagrant/
