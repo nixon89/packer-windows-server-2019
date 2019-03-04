@@ -1,3 +1,8 @@
+#testconnection script
+$resizedisk = <<-SCRIPT
+$MaxSize = (Get-PartitionSupportedSize -DriveLetter C).SizeMax
+Resize-Partition -DriveLetter C -Size $MaxSize
+SCRIPT
 # script will saved to C:\tmp\vagrant-shell.ps1
 # only powershell syntax supported
 $script = <<-SCRIPT
@@ -14,7 +19,7 @@ Vagrant.configure("2") do |config|
   #requires https://github.com/sprotheroe/vagrant-disksize
   config.disksize.size = '50GB'
   config.vm.guest = :windows
-  config.vm.hostname = "win2019-std-test-vm"
+  # config.vm.hostname = "win2019-std-test-vm"
   config.vm.communicator = "winrm"
   config.vm.network :forwarded_port, guest: 3389, host: 3389, id: 'rdp', auto_correct: true
 
@@ -27,12 +32,14 @@ Vagrant.configure("2") do |config|
     #memory settings
     vb.memory = 2048
     #cpu settings
-    vb.cpus = 2
+    vb.cpus = 4
     #virtualbox vm name
     vb.name = "win2019-std"
   end
   
-  #run powershell provision script
+  #run powershell script for resize C drive
+  config.vm.provision "shell", inline: $resizedisk
+  #run powershell provision script to configure windows for working with ansible
   config.vm.provision "shell", inline: $script
 
   #try ansible
