@@ -13,4 +13,4 @@ packer build -only=virtualbox-iso 2019.json
 vagrant box add  win2019-std windows-2019-standard-virtualbox.box
 
 # list aviliable vagrant boxes
-vagrant box list
+vagrant box list | grep 'win2019-std'
