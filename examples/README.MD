@@ -6,7 +6,7 @@ Example, how to use box in Vagrant.
 ### requirements 
 1. Virtualbox
 2. Vagrant
-3. [vagrant-disksize plugin](https://github.com/sprotheroe/vagrant-disksize) (for )
+3. [vagrant-disksize plugin](https://github.com/sprotheroe/vagrant-disksize) (for expand vm disk size, if needed)
 4. Ansible (for provision vm via ansible)
 5. python-pip (for pip modules)
 6. pywinrm (module from python-pip, for connect from ansible to windows vm through winrm)
