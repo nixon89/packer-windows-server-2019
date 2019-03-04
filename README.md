@@ -3,7 +3,7 @@
 ### What is it?
 Repo for building windows server 2016/2019 vagrant boxes from packer templates.
 
-For eample, this box may be used for testing ansible windows roles.
+For example, this box may be used for testing ansible windows roles.
 
 *Note: supported only VirtualBox provider.*
 
