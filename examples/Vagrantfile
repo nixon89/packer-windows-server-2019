@@ -11,6 +11,8 @@ SCRIPT
 Vagrant.configure("2") do |config|
 
   config.vm.box = "win2019-std"
+  #requires https://github.com/sprotheroe/vagrant-disksize
+  config.disksize.size = '50GB'
   config.vm.guest = :windows
   config.vm.hostname = "win2019-std-test-vm"
   config.vm.communicator = "winrm"

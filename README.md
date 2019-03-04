@@ -3,6 +3,7 @@
 ## requirements 
 Packer
 Vagrant
+https://github.com/sprotheroe/vagrant-disksize
 Virtualbox
 pip: pywinrm
 
