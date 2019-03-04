@@ -66,7 +66,7 @@
                 </ProductKey>
                 <AcceptEula>true</AcceptEula>
                 <FullName>Vagrant</FullName>
-                <Organization>Bento by Chef Software, Inc.</Organization>
+                <Organization>some organization</Organization>
             </UserData>
         </component>
     </settings>
