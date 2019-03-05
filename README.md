@@ -21,3 +21,6 @@ This script build Windwos Server 2019 box for the VirtualBox provider and import
 
 ### Runnin new box in Vagrant
 See `examples` dir in this repo.
+
+### This box on VagrantCloud
+[nixon89/win2019-std](https://app.vagrantup.com/nixon89/boxes/win2019-std)
