@@ -10,4 +10,4 @@ packer build -only=virtualbox-iso 2019.json
 echo "${YELLOW}==> build.sh: importing windows server 2019 box to vagrant ${YELLOW}\n"
 vagrant box add  win2019-std windows-2019-standard-virtualbox.box
 echo "${YELLOW}==> build.sh: list aviliable vagrant boxes ${YELLOW}\n"
-vagrant box list 
+vagrant box list
