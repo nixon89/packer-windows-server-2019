@@ -65,6 +65,18 @@
 			]
 		},
 		{
+			"type": "windows-restart"
+		},
+		{
+			"type": "powershell",
+			"script": "scripts/prepare-winrm-for-ansible.ps1",
+			"elevated_user": "vagrant",
+			"elevated_password": "vagrant"
+		},
+		{
+			"type": "windows-restart"
+		},
+		{
 			"type": "powershell",
 			"script": "scripts/cleanup.ps1",
 			"elevated_user": "vagrant",
