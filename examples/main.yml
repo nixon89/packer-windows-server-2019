@@ -7,7 +7,7 @@
     ansible_connection: winrm
     # # The following is necessary for Python 2.7.9+ (or any older Python that has backported SSLContext, eg, Python 2.7.5 on RHEL7) when using default WinRM self-signed certificates:
     # ansible_winrm_server_cert_validation: ignore
-    ansible_winrm_scheme: http
+    ansible_winrm_scheme: https
     ansible_winrm_transport: ntlm
     ansible_winrm_send_cbt: true
 

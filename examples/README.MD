@@ -3,7 +3,7 @@
 # Example usage
 ### What is it?
 Example, how to use box in Vagrant.
-### requirements 
+### requirements
 1. Virtualbox
 2. Vagrant
 3. [vagrant-disksize plugin](https://github.com/sprotheroe/vagrant-disksize) (for expand vm disk size, if needed)
